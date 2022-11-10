@@ -18,6 +18,7 @@ async function run(){
     try{
         const serviceCollection = client.db('sakibsKitchen').collection('services');
         const reviewCollection = client.db('sakibsKitchen').collection('review');
+        const newServiceCollection = client.db('sakibsKitchen').collection('newService');
 
         app.get('/services', async(req, res) =>{
             const query = {}
@@ -78,6 +79,13 @@ async function run(){
             const id = req.params.id;
             const query ={_id: ObjectId(id)};
             const result = await reviewCollection.deleteOne(query);
+            res.send(result);
+        });
+
+        // newservice api
+        app.post('/newService', async(req, res)=>{
+            const newService = req.body;
+            const result = await serviceCollection.insertOne(newService);
             res.send(result);
         })
         
