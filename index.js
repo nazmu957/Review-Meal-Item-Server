@@ -85,7 +85,7 @@ async function run(){
             res.send(result);
         });
 
-        // newservice api list
+        // newservice api 
         app.post('/newService', async(req, res)=>{
             const newService = req.body;
             const result = await serviceCollection.insertOne(newService);
