@@ -21,7 +21,7 @@ async function run(){
         const newServiceCollection = client.db('sakibsKitchen').collection('newService');
        
 
-        //api list
+        //api lists
         app.get('/services', async(req, res) =>{
             const query = {}
             const cursor = serviceCollection.find(query);
