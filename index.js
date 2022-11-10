@@ -19,7 +19,9 @@ async function run(){
         const serviceCollection = client.db('sakibsKitchen').collection('services');
         const reviewCollection = client.db('sakibsKitchen').collection('review');
         const newServiceCollection = client.db('sakibsKitchen').collection('newService');
+       
 
+        //api list
         app.get('/services', async(req, res) =>{
             const query = {}
             const cursor = serviceCollection.find(query);
@@ -62,7 +64,7 @@ async function run(){
             const result = await reviewCollection.insertOne(review);
             res.send(result);
         });
-        
+
         app.patch('/reviews/:id', async(req, res) =>{
             const id = req.params.id;
             const status = req.body.status
